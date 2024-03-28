@@ -1,0 +1,182 @@
+---
+title: "HELP DOC"
+format: html
+editor: visual
+---
+
+# R
+
+installation via github de packages :
+
+``` {style="color:blue"}
+install.packages("remotes")
+library(remotes)
+remotes::install_github("inseefrlab/doremifasol")
+```
+
+Regex : <https://regex101.com/>
+
+CTRL + SHIFT + R : Création d'une section
+
+code d'une fonction : tapper dans la console package::fonction (exemple : eeptools::isid)
+
+Installation package via github :
+
+``` {style="color:blue"}
+install.packages("remotes")
+library(remotes)
+remotes::install_github("inseefrlab/doremifasol")
+```
+
+Nettoyage environnement :
+
+``` {style="color:blue"}
+rm(list=ls())
+```
+
+Connexions BDD :
+
+``` {style="color:blue"}
+pg←postgres()
+nomen <- postgres(dbname = "nomenclature")
+personne <- postgres(dbname = "personne") 
+pg_pens <- postgres(dbname = "pens")
+```
+
+liste classe / mode et type de l'ensemble des variables d'un DF :
+
+``` {style="color:blue"}
+df %>% 
+  lapply(function(x) c(class = class(x), mode = mode(x), type = typeof(x))) %>%  
+  dplyr::bind_rows() %>%  
+  mutate(element = names(df), .before = 1) 
+```
+
+Utilisation d'un texte pour appeler une variable :
+
+``` {style="color:blue"}
+calculer_min_max <- function(df, variable) {
+  df %>%
+    summarise(n = n(), min = min({{ variable }}), max = max({{ variable }}))
+}
+calculer_min_max(recensement, population_totale)
+```
+
+Fonctions diverses :
+
+``` {style="color:blue"}
+str("variable") ->détail d'un dataframe ou d'une variable :
+cat("a","b")-> print + paste
+```
+
+# Git
+
+``` {style="color:blue"}
+git status pour voir ce qui déconne
+```
+
+``` {style="color:blue"}
+git rebase –skip ou git rebase –abort
+```
+
+``` {style="color:blue"}
+git reset HEAD\~ ← annule le dernier commit
+```
+
+``` {style="color:blue"}
+git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git
+```
+
+# Linux
+
+Connexion avec un autre user
+
+``` {style="color:blue"}
+su -l username
+```
+
+accès crontab :
+
+``` {style="color:blue"}
+crontab -e
+```
+
+modification droits :
+
+``` {style="color:blue"}
+chmod 664 « nom du fichier » → Droit de lecture/ecriture au groupe et lecture tous le monde 
+```
+
+suppressionr répertoire :
+
+``` {style="color:blue"}
+rm -r <nom_répertoire> → Supprime le repertoire et tout son contenu .
+```
+
+création répertoire :
+
+``` {style="color:blue"}
+Mkdir <nom dossier> → création repertoire
+```
+
+Lister fichier répertoire avec droits :
+
+``` {style="color:blue"}
+ls -al affiche tous les fichiers / dossiers et les droits
+```
+
+Vim :
+
+``` {style="color:blue"}
+sauvegarder : ECHAP + :w
+
+quitter : ECHAP + :x
+```
+
+# Postgres :
+
+droits sur une base de données :
+
+``` {style="color:blue"}
+dbGetQuery(pg, "select a.schemaname, a.tablename, b.usename,
+HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) 
+|| '.' || quote_ident(tablename), 'select') as has_select, 
+HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) 
+|| '.' || quote_ident(tablename), 'insert') as has_insert,
+HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname)
+|| '.' || quote_ident(tablename), 'update') as has_update,
+HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) 
+|| '.' || quote_ident(tablename), 'delete') as has_delete, 
+HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) 
+|| '.' || quote_ident(tablename), 'references') as has_references 
+from pg_tables a, pg_user b where a.schemaname = 'concession' and a.tablename='concession';")
+```
+
+Supprimer le schéma :
+
+``` {style="color:blue"}
+dbExecute(pgadmin, glue("DROP SCHEMA if exists {schema} cascade"))
+```
+
+Taille d'une base :
+
+``` {style="color:blue"}
+SELECT schema_name, 
+       pg_size_pretty(sum(table_size)::bigint)       
+FROM (
+  SELECT pg_catalog.pg_namespace.nspname as schema_name,
+         pg_relation_size(pg_catalog.pg_class.oid) as table_size
+  FROM   pg_catalog.pg_class
+     JOIN pg_catalog.pg_namespace ON relnamespace = pg_catalog.pg_namespace.oid
+) t
+GROUP BY schema_name
+ORDER BY schema_name
+```
+
+# Biblio :
+
+Source : Tidy data écrit par Hadley Wickham
+
+<https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_consolidation/supports_cours/>
+
+<https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_expertise/supports_cours/>
