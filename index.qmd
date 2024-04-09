@@ -69,6 +69,12 @@ str("variable") ->détail d'un dataframe ou d'une variable :
 cat("a","b")-> print + paste
 ```
 
+
+Ajout ligne total sur un data frame : 
+```{style="color:blue"}
+rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))->tab
+```
+
 # Git
 
 ``` {style="color:blue"}

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,6 +96,8 @@ calculer_min_max(recensement, population_totale)</code></pre>
 <p>Fonctions diverses :</p>
 <pre style="color:blue"><code>str("variable") -&gt;détail d'un dataframe ou d'une variable :
 cat("a","b")-&gt; print + paste</code></pre>
+<p>Ajout ligne total sur un data frame :</p>
+<pre style="color:blue"><code>rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))-&gt;tab</code></pre>
 </section>
 <section id="git" class="level1">
 <h1>Git</h1>
