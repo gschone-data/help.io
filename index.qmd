@@ -83,6 +83,7 @@ git stash
 git stash list
 git stash apply
 git commit -m:"blabla"
+git commit -ammend
 ```
 
 ``` {style="color:blue"}
