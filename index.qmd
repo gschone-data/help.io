@@ -78,12 +78,12 @@ rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))->tab
 # Git
 Fonctions de base
 ``` {style="color:blue"}
-#remisage
-git stash
+
+git stash #remisage : on met de coté les travaux en court pour repartir sur le clean
 git stash list
 git stash apply
 git commit -m:"blabla"
-git commit -ammend
+git commit --amend
 ```
 
 ``` {style="color:blue"}
