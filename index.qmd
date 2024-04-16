@@ -76,6 +76,14 @@ rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))->tab
 ```
 
 # Git
+Fonctions de base
+``` {style="color:blue"}
+#remisage
+git stash
+git stash list
+git stash apply
+git commit -m:"blabla"
+```
 
 ``` {style="color:blue"}
 git status pour voir ce qui déconne
@@ -92,6 +100,7 @@ git reset HEAD\~ ← annule le dernier commit
 ``` {style="color:blue"}
 git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git
 ```
+
 
 # Linux
 
