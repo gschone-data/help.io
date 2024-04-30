@@ -69,26 +69,36 @@ str("variable") ->détail d'un dataframe ou d'une variable :
 cat("a","b")-> print + paste
 ```
 
+Ajout ligne total sur un data frame :
 
-Ajout ligne total sur un data frame : 
-```{style="color:blue"}
+``` {style="color:blue"}
 rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))->tab
 ```
 
 # Git
+
 Fonctions de base
+
 ``` {style="color:blue"}
 
-git stash #remisage : on met de coté les travaux en court pour repartir sur le clean
-git stash list
-git stash apply
 git commit -m:"blabla"
 git commit --amend
 ```
 
 ``` {style="color:blue"}
 git status pour voir ce qui déconne
+git add #pour ajouter un fichier non indexé ensuite on commit et on push 
+git clean -n -f liste des fichiers à éventuelement nettoyer en local
+git clean -f pour forcer le nettoyage
 ```
+
+``` {style="color:blue"}
+git stash #remisage : on met de coté les travaux en court pour repartir sur le clean
+git stash list
+git stash apply
+```
+
+
 
 ``` {style="color:blue"}
 git rebase –skip ou git rebase –abort
@@ -101,7 +111,6 @@ git reset HEAD\~ ← annule le dernier commit
 ``` {style="color:blue"}
 git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git
 ```
-
 
 # Linux
 
