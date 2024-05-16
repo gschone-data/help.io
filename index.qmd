@@ -62,6 +62,12 @@ calculer_min_max <- function(df, variable) {
 calculer_min_max(recensement, population_totale)
 ```
 
+Assignation dynamique :
+
+``` {style="color:blue"}
+ annee=2015
+ assign(glue("var_{annee}"),3) #assign à la variable var_2015 la valeur 3
+```
 Fonctions diverses :
 
 ``` {style="color:blue"}
@@ -97,8 +103,6 @@ git stash #remisage : on met de coté les travaux en court pour repartir sur le 
 git stash list
 git stash apply
 ```
-
-
 
 ``` {style="color:blue"}
 git rebase –skip ou git rebase –abort
