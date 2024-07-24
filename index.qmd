@@ -68,6 +68,7 @@ Assignation dynamique :
  annee=2015
  assign(glue("var_{annee}"),3) #assign à la variable var_2015 la valeur 3
 ```
+
 Fonctions diverses :
 
 ``` {style="color:blue"}
@@ -79,6 +80,15 @@ Ajout ligne total sur un data frame :
 
 ``` {style="color:blue"}
 rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))->tab
+```
+
+Rechercher NA data frame
+
+```{r}
+DT<-iris
+na_count <-sapply(DT, function(y) sum(length(which(is.na(y)))))
+na_count <- data.frame(na_count)
+
 ```
 
 # Git
