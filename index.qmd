@@ -4,6 +4,10 @@ format: html
 editor: visual
 ---
 
+Liste évolutive de commandes R / GIT / LINUX
+
+[Github](https://github.com/gschone-data)
+
 # R
 
 installation via github de packages :
