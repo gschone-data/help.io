@@ -14,8 +14,6 @@ library(remotes)
 remotes::install_github("inseefrlab/doremifasol")
 ```
 
-Regex : <https://regex101.com/>
-
 CTRL + SHIFT + R : Création d'une section
 
 code d'une fonction : tapper dans la console package::fonction (exemple : eeptools::isid)
@@ -60,6 +58,14 @@ calculer_min_max <- function(df, variable) {
     summarise(n = n(), min = min({{ variable }}), max = max({{ variable }}))
 }
 calculer_min_max(recensement, population_totale)
+```
+
+Utilisation d'une variable texte dans une fonction : eval(parse(test=....)
+
+```{r}
+test1= "substr(blabla,1,3='SPA')"
+dt |> filter(eval(parse(text=test1)))
+
 ```
 
 Assignation dynamique :
@@ -216,6 +222,6 @@ ORDER BY schema_name
 
 Source : Tidy data écrit par Hadley Wickham
 
-<https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_consolidation/supports_cours/>
+La bible de la crontab : <https://crontab.guru/>
 
-<https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_expertise/supports_cours/>
+Regex : <https://regex101.com/>
