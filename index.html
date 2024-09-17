@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -102,7 +102,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre style="color:blue"><code>install.packages("remotes")
 library(remotes)
 remotes::install_github("inseefrlab/doremifasol")</code></pre>
-<p>Regex : <a href="https://regex101.com/" class="uri">https://regex101.com/</a></p>
 <p>CTRL + SHIFT + R : Création d’une section</p>
 <p>code d’une fonction : tapper dans la console package::fonction (exemple : eeptools::isid)</p>
 <p>Installation package via github :</p>
@@ -127,6 +126,33 @@ pg_pens &lt;- postgres(dbname = "pens")</code></pre>
     summarise(n = n(), min = min({{ variable }}), max = max({{ variable }}))
 }
 calculer_min_max(recensement, population_totale)</code></pre>
+<p>Utilisation d’une variable texte dans une fonction : eval(parse(test=….)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dt<span class="ot">&lt;-</span>cars</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>test1<span class="ot">=</span> <span class="st">"dist&gt;90L"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text=</span>test1)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  speed dist
+1    24   92
+2    24   93
+3    24  120</code></pre>
+</div>
+</div>
 <p>Assignation dynamique :</p>
 <pre style="color:blue"><code> annee=2015
  assign(glue("var_{annee}"),3) #assign à la variable var_2015 la valeur 3</code></pre>
@@ -137,9 +163,9 @@ cat("a","b")-&gt; print + paste</code></pre>
 <pre style="color:blue"><code>rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))-&gt;tab</code></pre>
 <p>Rechercher NA data frame</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>DT<span class="ot">&lt;-</span>iris</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span><span class="fu">sapply</span>(DT, <span class="cf">function</span>(y) <span class="fu">sum</span>(<span class="fu">length</span>(<span class="fu">which</span>(<span class="fu">is.na</span>(y)))))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(na_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>DT<span class="ot">&lt;-</span>iris</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span><span class="fu">sapply</span>(DT, <span class="cf">function</span>(y) <span class="fu">sum</span>(<span class="fu">length</span>(<span class="fu">which</span>(<span class="fu">is.na</span>(y)))))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(na_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="git" class="level1">
@@ -147,7 +173,7 @@ cat("a","b")-&gt; print + paste</code></pre>
 <p>Fonctions de base</p>
 <pre style="color:blue"><code>
 git commit -m:"blabla"
-git commit --amend</code></pre>
+git commit --amend -m:'update previous commit'</code></pre>
 <pre style="color:blue"><code>git status pour voir ce qui déconne
 git add #pour ajouter un fichier non indexé ensuite on commit et on push 
 git clean -n -f liste des fichiers à éventuelement nettoyer en local
@@ -210,8 +236,8 @@ ORDER BY schema_name</code></pre>
 <section id="biblio" class="level1">
 <h1>Biblio :</h1>
 <p>Source : Tidy data écrit par Hadley Wickham</p>
-<p><a href="https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_consolidation/supports_cours/" class="uri">https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_consolidation/supports_cours/</a></p>
-<p><a href="https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_expertise/supports_cours/" class="uri">https://formations_r_insee_veltys.pages.lab.sspcloud.fr/r_expertise/supports_cours/</a></p>
+<p>La bible de la crontab : <a href="https://crontab.guru/" class="uri">https://crontab.guru/</a></p>
+<p>Regex : <a href="https://regex101.com/" class="uri">https://regex101.com/</a></p>
 </section>
 
 </main>
