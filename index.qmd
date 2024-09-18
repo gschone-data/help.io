@@ -123,7 +123,7 @@ git clean -f pour forcer le nettoyage
 ``` {style="color:blue"}
 git stash #remisage : on met de coté les travaux en court pour repartir sur le clean
 git stash list
-git stash apply
+git stash apply ou git stash drop pour virer
 ```
 
 ``` {style="color:blue"}
@@ -132,6 +132,10 @@ git rebase –skip ou git rebase –abort
 
 ``` {style="color:blue"}
 git reset HEAD\~ ← annule le dernier commit
+```
+
+``` {style="color:blue"}
+git log --oneline
 ```
 
 ``` {style="color:blue"}
