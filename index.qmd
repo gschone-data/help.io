@@ -135,8 +135,24 @@ git reset HEAD\~ ← annule le dernier commit
 ```
 
 ``` {style="color:blue"}
-git log --oneline
+#revenir à un commit et l'appliquer sur le main 
+git log --oneline ##log sur une ligne
+git reset --hard <commit hash>
+git push -f origin main
+
 ```
+
+
+``` {style="color:blue"}
+#gestion conflit sur un fichier 
+git rebase
+#modif du fichier
+git add .
+git rebase --continue
+git push
+
+```
+
 
 ``` {style="color:blue"}
 git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git

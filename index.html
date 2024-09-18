@@ -185,7 +185,18 @@ git stash list
 git stash apply ou git stash drop pour virer</code></pre>
 <pre style="color:blue"><code>git rebase –skip ou git rebase –abort</code></pre>
 <pre style="color:blue"><code>git reset HEAD\~ ← annule le dernier commit</code></pre>
-<pre style="color:blue"><code>git log --oneline</code></pre>
+<pre style="color:blue"><code>#revenir à un commit et l'appliquer sur le main 
+git log --oneline ##log sur une ligne
+git reset --hard &lt;commit hash&gt;
+git push -f origin main
+</code></pre>
+<pre style="color:blue"><code>#gestion conflit sur un fichier 
+git rebase
+#modif du fichier
+git add .
+git rebase --continue
+git push
+</code></pre>
 <pre style="color:blue"><code>git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git</code></pre>
 </section>
 <section id="linux" class="level1">
