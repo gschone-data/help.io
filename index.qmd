@@ -1,6 +1,8 @@
 ---
 title: "HELP DOC"
-format: html
+format: 
+  html:
+     theme: darkly
 editor: visual
 ---
 
@@ -11,10 +13,9 @@ Liste évolutive de commandes R / GIT / LINUX
 ::: panel-tabset
 ## R
 
-
 installation via github de packages :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 install.packages("remotes")
 library(remotes)
 remotes::install_github("inseefrlab/doremifasol")
@@ -26,7 +27,7 @@ code d'une fonction : tapper dans la console package::fonction (exemple : eeptoo
 
 Installation package via github :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 install.packages("remotes")
 library(remotes)
 remotes::install_github("inseefrlab/doremifasol")
@@ -34,13 +35,13 @@ remotes::install_github("inseefrlab/doremifasol")
 
 Nettoyage environnement :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 rm(list=ls())
 ```
 
 Connexions BDD :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 pg←postgres()
 nomen <- postgres(dbname = "nomenclature")
 personne <- postgres(dbname = "personne") 
@@ -49,7 +50,7 @@ pg_pens <- postgres(dbname = "pens")
 
 liste classe / mode et type de l'ensemble des variables d'un DF :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 df %>% 
   lapply(function(x) c(class = class(x), mode = mode(x), type = typeof(x))) %>%  
   dplyr::bind_rows() %>%  
@@ -58,7 +59,7 @@ df %>%
 
 Utilisation d'un texte pour appeler une variable :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 calculer_min_max <- function(df, variable) {
   df %>%
     summarise(n = n(), min = min({{ variable }}), max = max({{ variable }}))
@@ -78,21 +79,21 @@ dt |> filter(eval(parse(text=test1)))
 
 Assignation dynamique :
 
-``` {style="color:blue"}
+``` {style="color:green"}
  annee=2015
  assign(glue("var_{annee}"),3) #assign à la variable var_2015 la valeur 3
 ```
 
 Fonctions diverses :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 str("variable") ->détail d'un dataframe ou d'une variable :
 cat("a","b")-> print + paste
 ```
 
 Ajout ligne total sur un data frame :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))->tab
 ```
 
@@ -109,41 +110,41 @@ na_count <- data.frame(na_count)
 
 Fonctions de base
 
-``` {style="color:blue"}
+``` {style="color:green"}
 
 git commit -m:"blabla"
 git commit --amend -m:'update previous commit'
 ```
 
-``` {style="color:blue"}
+``` {style="color:green"}
 git status pour voir ce qui déconne
 git add #pour ajouter un fichier non indexé ensuite on commit et on push 
 git clean -n -f liste des fichiers à éventuelement nettoyer en local
 git clean -f pour forcer le nettoyage
 ```
 
-``` {style="color:blue"}
+``` {style="color:green"}
 git stash #remisage : on met de coté les travaux en court pour repartir sur le clean
 git stash list
 git stash apply ou git stash drop pour virer
 ```
 
-``` {style="color:blue"}
+``` {style="color:green"}
 git rebase –skip ou git rebase –abort
 ```
 
-``` {style="color:blue"}
+``` {style="color:green"}
 git reset HEAD\~ ← annule le dernier commit
 ```
 
-``` {style="color:blue"}
+``` {style="color:green"}
 #revenir à un commit et l'appliquer sur le main 
 git log --oneline ##log sur une ligne
 git reset --hard <commit hash>
 git push -f origin main
 ```
 
-``` {style="color:blue"}
+``` {style="color:green"}
 #gestion conflit sur un fichier 
 git rebase
 #modif du fichier
@@ -152,7 +153,7 @@ git rebase --continue
 git push
 ```
 
-``` {style="color:blue"}
+``` {style="color:green"}
 git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git
 ```
 
@@ -160,43 +161,43 @@ git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.
 
 Connexion avec un autre user
 
-``` {style="color:blue"}
+``` {style="color:green"}
 su -l username
 ```
 
 accès crontab :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 crontab -e
 ```
 
 modification droits :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 chmod 664 « nom du fichier » → Droit de lecture/ecriture au groupe et lecture tous le monde 
 ```
 
 suppressionr répertoire :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 rm -r <nom_répertoire> → Supprime le repertoire et tout son contenu .
 ```
 
 création répertoire :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 Mkdir <nom dossier> → création repertoire
 ```
 
 Lister fichier répertoire avec droits :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 ls -al affiche tous les fichiers / dossiers et les droits
 ```
 
 Vim :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 sauvegarder : ECHAP + :w
 
 quitter : ECHAP + :x
@@ -204,7 +205,7 @@ quitter : ECHAP + :x
 
 Taille des fichiers :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 du -sh * | sort -hr #liste par taille decroissante les éléments de premier niveau d'un répertoire
 du -h -a #liste la taille de tous les éléments d'un répertoire (fichier caché aussi)
 
@@ -215,7 +216,7 @@ find / -type f -size +100M #liste tous les fichiers du répertoire dont la taill
 
 droits sur une base de données :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 dbGetQuery(pg, "select a.schemaname, a.tablename, b.usename,
 HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) 
 || '.' || quote_ident(tablename), 'select') as has_select, 
@@ -232,13 +233,13 @@ from pg_tables a, pg_user b where a.schemaname = 'concession' and a.tablename='c
 
 Supprimer le schéma :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 dbExecute(pgadmin, glue("DROP SCHEMA if exists {schema} cascade"))
 ```
 
 Taille d'une base :
 
-``` {style="color:blue"}
+``` {style="color:green"}
 SELECT schema_name, 
        pg_size_pretty(sum(table_size)::bigint)       
 FROM (
@@ -258,6 +259,4 @@ Source : Tidy data écrit par Hadley Wickham
 La bible de la crontab : <https://crontab.guru/>
 
 Regex : <https://regex101.com/>
-
-
 :::

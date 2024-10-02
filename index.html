@@ -63,10 +63,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 
 
 </head>
@@ -103,29 +103,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>installation via github de packages :</p>
-<pre style="color:blue"><code>install.packages("remotes")
+<pre style="color:green"><code>install.packages("remotes")
 library(remotes)
 remotes::install_github("inseefrlab/doremifasol")</code></pre>
 <p>CTRL + SHIFT + R : Création d’une section</p>
 <p>code d’une fonction : tapper dans la console package::fonction (exemple : eeptools::isid)</p>
 <p>Installation package via github :</p>
-<pre style="color:blue"><code>install.packages("remotes")
+<pre style="color:green"><code>install.packages("remotes")
 library(remotes)
 remotes::install_github("inseefrlab/doremifasol")</code></pre>
 <p>Nettoyage environnement :</p>
-<pre style="color:blue"><code>rm(list=ls())</code></pre>
+<pre style="color:green"><code>rm(list=ls())</code></pre>
 <p>Connexions BDD :</p>
-<pre style="color:blue"><code>pg←postgres()
+<pre style="color:green"><code>pg←postgres()
 nomen &lt;- postgres(dbname = "nomenclature")
 personne &lt;- postgres(dbname = "personne") 
 pg_pens &lt;- postgres(dbname = "pens")</code></pre>
 <p>liste classe / mode et type de l’ensemble des variables d’un DF :</p>
-<pre style="color:blue"><code>df %&gt;% 
+<pre style="color:green"><code>df %&gt;% 
   lapply(function(x) c(class = class(x), mode = mode(x), type = typeof(x))) %&gt;%  
   dplyr::bind_rows() %&gt;%  
   mutate(element = names(df), .before = 1) </code></pre>
 <p>Utilisation d’un texte pour appeler une variable :</p>
-<pre style="color:blue"><code>calculer_min_max &lt;- function(df, variable) {
+<pre style="color:green"><code>calculer_min_max &lt;- function(df, variable) {
   df %&gt;%
     summarise(n = n(), min = min({{ variable }}), max = max({{ variable }}))
 }
@@ -158,13 +158,13 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <p>Assignation dynamique :</p>
-<pre style="color:blue"><code> annee=2015
+<pre style="color:green"><code> annee=2015
  assign(glue("var_{annee}"),3) #assign à la variable var_2015 la valeur 3</code></pre>
 <p>Fonctions diverses :</p>
-<pre style="color:blue"><code>str("variable") -&gt;détail d'un dataframe ou d'une variable :
+<pre style="color:green"><code>str("variable") -&gt;détail d'un dataframe ou d'une variable :
 cat("a","b")-&gt; print + paste</code></pre>
 <p>Ajout ligne total sur un data frame :</p>
-<pre style="color:blue"><code>rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))-&gt;tab</code></pre>
+<pre style="color:green"><code>rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))-&gt;tab</code></pre>
 <p>Rechercher NA data frame</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>DT<span class="ot">&lt;-</span>iris</span>
@@ -174,56 +174,56 @@ cat("a","b")-&gt; print + paste</code></pre>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Fonctions de base</p>
-<pre style="color:blue"><code>
+<pre style="color:green"><code>
 git commit -m:"blabla"
 git commit --amend -m:'update previous commit'</code></pre>
-<pre style="color:blue"><code>git status pour voir ce qui déconne
+<pre style="color:green"><code>git status pour voir ce qui déconne
 git add #pour ajouter un fichier non indexé ensuite on commit et on push 
 git clean -n -f liste des fichiers à éventuelement nettoyer en local
 git clean -f pour forcer le nettoyage</code></pre>
-<pre style="color:blue"><code>git stash #remisage : on met de coté les travaux en court pour repartir sur le clean
+<pre style="color:green"><code>git stash #remisage : on met de coté les travaux en court pour repartir sur le clean
 git stash list
 git stash apply ou git stash drop pour virer</code></pre>
-<pre style="color:blue"><code>git rebase –skip ou git rebase –abort</code></pre>
-<pre style="color:blue"><code>git reset HEAD\~ ← annule le dernier commit</code></pre>
-<pre style="color:blue"><code>#revenir à un commit et l'appliquer sur le main 
+<pre style="color:green"><code>git rebase –skip ou git rebase –abort</code></pre>
+<pre style="color:green"><code>git reset HEAD\~ ← annule le dernier commit</code></pre>
+<pre style="color:green"><code>#revenir à un commit et l'appliquer sur le main 
 git log --oneline ##log sur une ligne
 git reset --hard &lt;commit hash&gt;
 git push -f origin main</code></pre>
-<pre style="color:blue"><code>#gestion conflit sur un fichier 
+<pre style="color:green"><code>#gestion conflit sur un fichier 
 git rebase
 #modif du fichier
 git add .
 git rebase --continue
 git push</code></pre>
-<pre style="color:blue"><code>git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git</code></pre>
+<pre style="color:green"><code>git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git</code></pre>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>Connexion avec un autre user</p>
-<pre style="color:blue"><code>su -l username</code></pre>
+<pre style="color:green"><code>su -l username</code></pre>
 <p>accès crontab :</p>
-<pre style="color:blue"><code>crontab -e</code></pre>
+<pre style="color:green"><code>crontab -e</code></pre>
 <p>modification droits :</p>
-<pre style="color:blue"><code>chmod 664 «&nbsp;nom du fichier&nbsp;» → Droit de lecture/ecriture au groupe et lecture tous le monde </code></pre>
+<pre style="color:green"><code>chmod 664 «&nbsp;nom du fichier&nbsp;» → Droit de lecture/ecriture au groupe et lecture tous le monde </code></pre>
 <p>suppressionr répertoire :</p>
-<pre style="color:blue"><code>rm -r &lt;nom_répertoire&gt; → Supprime le repertoire et tout son contenu .</code></pre>
+<pre style="color:green"><code>rm -r &lt;nom_répertoire&gt; → Supprime le repertoire et tout son contenu .</code></pre>
 <p>création répertoire :</p>
-<pre style="color:blue"><code>Mkdir &lt;nom dossier&gt; → création repertoire</code></pre>
+<pre style="color:green"><code>Mkdir &lt;nom dossier&gt; → création repertoire</code></pre>
 <p>Lister fichier répertoire avec droits :</p>
-<pre style="color:blue"><code>ls -al affiche tous les fichiers / dossiers et les droits</code></pre>
+<pre style="color:green"><code>ls -al affiche tous les fichiers / dossiers et les droits</code></pre>
 <p>Vim :</p>
-<pre style="color:blue"><code>sauvegarder : ECHAP + :w
+<pre style="color:green"><code>sauvegarder : ECHAP + :w
 
 quitter : ECHAP + :x</code></pre>
 <p>Taille des fichiers :</p>
-<pre style="color:blue"><code>du -sh * | sort -hr #liste par taille decroissante les éléments de premier niveau d'un répertoire
+<pre style="color:green"><code>du -sh * | sort -hr #liste par taille decroissante les éléments de premier niveau d'un répertoire
 du -h -a #liste la taille de tous les éléments d'un répertoire (fichier caché aussi)
 
 find / -type f -size +100M #liste tous les fichiers du répertoire dont la taille est superieure à 100M</code></pre>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>droits sur une base de données&nbsp;:</p>
-<pre style="color:blue"><code>dbGetQuery(pg, "select a.schemaname, a.tablename, b.usename,
+<pre style="color:green"><code>dbGetQuery(pg, "select a.schemaname, a.tablename, b.usename,
 HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) 
 || '.' || quote_ident(tablename), 'select') as has_select, 
 HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) 
@@ -236,9 +236,9 @@ HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname)
 || '.' || quote_ident(tablename), 'references') as has_references 
 from pg_tables a, pg_user b where a.schemaname = 'concession' and a.tablename='concession';")</code></pre>
 <p>Supprimer le schéma :</p>
-<pre style="color:blue"><code>dbExecute(pgadmin, glue("DROP SCHEMA if exists {schema} cascade"))</code></pre>
+<pre style="color:green"><code>dbExecute(pgadmin, glue("DROP SCHEMA if exists {schema} cascade"))</code></pre>
 <p>Taille d’une base :</p>
-<pre style="color:blue"><code>SELECT schema_name, 
+<pre style="color:green"><code>SELECT schema_name, 
        pg_size_pretty(sum(table_size)::bigint)       
 FROM (
   SELECT pg_catalog.pg_namespace.nspname as schema_name,
