@@ -8,7 +8,9 @@ Liste évolutive de commandes R / GIT / LINUX
 
 [Github](https://github.com/gschone-data)
 
-# R
+::: panel-tabset
+## R
+
 
 installation via github de packages :
 
@@ -103,7 +105,7 @@ na_count <- data.frame(na_count)
 
 ```
 
-# Git
+## Git
 
 Fonctions de base
 
@@ -139,9 +141,7 @@ git reset HEAD\~ ← annule le dernier commit
 git log --oneline ##log sur une ligne
 git reset --hard <commit hash>
 git push -f origin main
-
 ```
-
 
 ``` {style="color:blue"}
 #gestion conflit sur un fichier 
@@ -150,15 +150,13 @@ git rebase
 git add .
 git rebase --continue
 git push
-
 ```
-
 
 ``` {style="color:blue"}
 git clone https://${GIT_PERSONAL_ACCESS_TOKEN}@github.com/gschone-dgfip/r_conso.git
 ```
 
-# Linux
+## Linux
 
 Connexion avec un autre user
 
@@ -204,7 +202,16 @@ sauvegarder : ECHAP + :w
 quitter : ECHAP + :x
 ```
 
-# Postgres :
+Taille des fichiers :
+
+``` {style="color:blue"}
+du -sh * | sort -hr #liste par taille decroissante les éléments de premier niveau d'un répertoire
+du -h -a #liste la taille de tous les éléments d'un répertoire (fichier caché aussi)
+
+find / -type f -size +100M #liste tous les fichiers du répertoire dont la taille est superieure à 100M
+```
+
+## Postgres
 
 droits sur une base de données :
 
@@ -244,10 +251,13 @@ GROUP BY schema_name
 ORDER BY schema_name
 ```
 
-# Biblio :
+## Biblio
 
 Source : Tidy data écrit par Hadley Wickham
 
 La bible de la crontab : <https://crontab.guru/>
 
 Regex : <https://regex101.com/>
+
+
+:::
