@@ -198,9 +198,12 @@ ls -al affiche tous les fichiers / dossiers et les droits
 Vim :
 
 ``` {style="color:green"}
-sauvegarder : ECHAP + :w
+ouvrir fichier : 
+vi xxxx.R
 
-quitter : ECHAP + :x
+sauvegarder : ECHAP + :w
+sauvegarder +quitter : ECHAP + :x
+quitter sans sauvegarder : ECHAP + :q!
 ```
 
 Taille des fichiers :
