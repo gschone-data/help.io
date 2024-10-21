@@ -262,4 +262,8 @@ Source : Tidy data écrit par Hadley Wickham
 La bible de la crontab : <https://crontab.guru/>
 
 Regex : <https://regex101.com/>
+
+DataViz : <https://www.data-to-viz.com/>
+
+Color palette : <https://r-graph-gallery.com/color-palette-finder>
 :::
