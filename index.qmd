@@ -70,6 +70,7 @@ calculer_min_max(recensement, population_totale)
 Utilisation d'une variable texte dans une fonction : eval(parse(test=....)
 
 ```{r}
+
 library(dplyr)
 dt<-cars
 test1= "dist>90L"
@@ -103,6 +104,18 @@ Rechercher NA data frame
 DT<-iris
 na_count <-sapply(DT, function(y) sum(length(which(is.na(y)))))
 na_count <- data.frame(na_count)
+
+```
+
+suppression doublon version dplyr/data.table
+
+``` {style="color:green"}
+# dplyr -----------------------------------------------------
+
+cars |>  distinct(speed, .keep_all = TRUE)->cars
+
+# data.table ....
+cars[!duplicated(speed),]
 
 ```
 
@@ -215,7 +228,7 @@ du -h -a #liste la taille de tous les éléments d'un répertoire (fichier cach�
 find / -type f -size +100M #liste tous les fichiers du répertoire dont la taille est superieure à 100M
 ```
 
-## Postgres
+## SQL
 
 droits sur une base de données :
 
@@ -253,6 +266,18 @@ FROM (
 ) t
 GROUP BY schema_name
 ORDER BY schema_name
+```
+
+SQL TOP 1 par groupe 
+```{style="color:green"}
+
+"SELECT *
+  FROM (SELECT cnaem, num_pens,mois_update,mois_insert,
+        dense_rank() over (partition by concat(cnaem,num_pens)
+                           order by mois_update desc,
+                           mois_insert desc) rnk
+        FROM presta.presta_id) as foo
+WHERE rnk = 1"
 ```
 
 ## Biblio
