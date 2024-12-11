@@ -21,17 +21,17 @@ library(remotes)
 remotes::install_github("inseefrlab/doremifasol")
 ```
 
+en local :
+
+``` {style="color:green"}
+ withr::with_libpaths("..lib.path...",
+                         devtools::install_local(file_zip))
+
+```
+
 CTRL + SHIFT + R : Création d'une section
 
 code d'une fonction : tapper dans la console package::fonction (exemple : eeptools::isid)
-
-Installation package via github :
-
-``` {style="color:green"}
-install.packages("remotes")
-library(remotes)
-remotes::install_github("inseefrlab/doremifasol")
-```
 
 Nettoyage environnement :
 
@@ -39,22 +39,10 @@ Nettoyage environnement :
 rm(list=ls())
 ```
 
-Connexions BDD :
+Récupération sql depuis **dbplyr**
 
 ``` {style="color:green"}
-pg←postgres()
-nomen <- postgres(dbname = "nomenclature")
-personne <- postgres(dbname = "personne") 
-pg_pens <- postgres(dbname = "pens")
-```
-
-liste classe / mode et type de l'ensemble des variables d'un DF :
-
-``` {style="color:green"}
-df %>% 
-  lapply(function(x) c(class = class(x), mode = mode(x), type = typeof(x))) %>%  
-  dplyr::bind_rows() %>%  
-  mutate(element = names(df), .before = 1) 
+tbl(xx,yy) |>   left_join(...)  |>  remote_query
 ```
 
 Utilisation d'un texte pour appeler une variable :
@@ -116,7 +104,15 @@ cars |>  distinct(speed, .keep_all = TRUE)->cars
 
 # data.table ....
 cars[!duplicated(speed),]
+```
 
+liste classe / mode et type de l'ensemble des variables d'un DF :
+
+``` {style="color:green"}
+df %>% 
+  lapply(function(x) c(class = class(x), mode = mode(x), type = typeof(x))) %>%  
+  dplyr::bind_rows() %>%  
+  mutate(element = names(df), .before = 1) 
 ```
 
 ## Git
@@ -268,8 +264,9 @@ GROUP BY schema_name
 ORDER BY schema_name
 ```
 
-SQL TOP 1 par groupe 
-```{style="color:green"}
+SQL TOP 1 par groupe
+
+``` {style="color:green"}
 
 "SELECT *
   FROM (SELECT cnaem, num_pens,mois_update,mois_insert,

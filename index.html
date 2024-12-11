@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -63,10 +63,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="index_files/libs/bootstrap/bootstrap-413f94520a3b4cc3e3b8dd405290f199.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 
 
 </head>
@@ -106,24 +106,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre style="color:green"><code>install.packages("remotes")
 library(remotes)
 remotes::install_github("inseefrlab/doremifasol")</code></pre>
+<p>en local :</p>
+<pre style="color:green"><code> withr::with_libpaths("..lib.path...",
+                         devtools::install_local(file_zip))
+</code></pre>
 <p>CTRL + SHIFT + R : Création d’une section</p>
 <p>code d’une fonction : tapper dans la console package::fonction (exemple : eeptools::isid)</p>
-<p>Installation package via github :</p>
-<pre style="color:green"><code>install.packages("remotes")
-library(remotes)
-remotes::install_github("inseefrlab/doremifasol")</code></pre>
 <p>Nettoyage environnement :</p>
 <pre style="color:green"><code>rm(list=ls())</code></pre>
-<p>Connexions BDD :</p>
-<pre style="color:green"><code>pg←postgres()
-nomen &lt;- postgres(dbname = "nomenclature")
-personne &lt;- postgres(dbname = "personne") 
-pg_pens &lt;- postgres(dbname = "pens")</code></pre>
-<p>liste classe / mode et type de l’ensemble des variables d’un DF :</p>
-<pre style="color:green"><code>df %&gt;% 
-  lapply(function(x) c(class = class(x), mode = mode(x), type = typeof(x))) %&gt;%  
-  dplyr::bind_rows() %&gt;%  
-  mutate(element = names(df), .before = 1) </code></pre>
+<p>Récupération sql depuis <strong>dbplyr</strong></p>
+<pre style="color:green"><code>tbl(xx,yy) |&gt;   left_join(...)  |&gt;  remote_query</code></pre>
 <p>Utilisation d’un texte pour appeler une variable :</p>
 <pre style="color:green"><code>calculer_min_max &lt;- function(df, variable) {
   df %&gt;%
@@ -132,7 +124,7 @@ pg_pens &lt;- postgres(dbname = "pens")</code></pre>
 calculer_min_max(recensement, population_totale)</code></pre>
 <p>Utilisation d’une variable texte dans une fonction : eval(parse(test=….)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -147,9 +139,9 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dt<span class="ot">&lt;-</span>cars</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>test1<span class="ot">=</span> <span class="st">"dist&gt;90L"</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text=</span>test1)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dt<span class="ot">&lt;-</span>cars</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>test1<span class="ot">=</span> <span class="st">"dist&gt;90L"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text=</span>test1)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  speed dist
 1    24   92
@@ -167,9 +159,9 @@ cat("a","b")-&gt; print + paste</code></pre>
 <pre style="color:green"><code>rbind(tab, data.frame(var = "Total", t(colSums(tab[, -1]))))-&gt;tab</code></pre>
 <p>Rechercher NA data frame</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>DT<span class="ot">&lt;-</span>iris</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span><span class="fu">sapply</span>(DT, <span class="cf">function</span>(y) <span class="fu">sum</span>(<span class="fu">length</span>(<span class="fu">which</span>(<span class="fu">is.na</span>(y)))))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(na_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>DT<span class="ot">&lt;-</span>iris</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span><span class="fu">sapply</span>(DT, <span class="cf">function</span>(y) <span class="fu">sum</span>(<span class="fu">length</span>(<span class="fu">which</span>(<span class="fu">is.na</span>(y)))))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>na_count <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(na_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>suppression doublon version dplyr/data.table</p>
 <pre style="color:green"><code># dplyr -----------------------------------------------------
@@ -177,8 +169,12 @@ cat("a","b")-&gt; print + paste</code></pre>
 cars |&gt;  distinct(speed, .keep_all = TRUE)-&gt;cars
 
 # data.table ....
-cars[!duplicated(speed),]
-</code></pre>
+cars[!duplicated(speed),]</code></pre>
+<p>liste classe / mode et type de l’ensemble des variables d’un DF :</p>
+<pre style="color:green"><code>df %&gt;% 
+  lapply(function(x) c(class = class(x), mode = mode(x), type = typeof(x))) %&gt;%  
+  dplyr::bind_rows() %&gt;%  
+  mutate(element = names(df), .before = 1) </code></pre>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Fonctions de base</p>
@@ -363,8 +359,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -475,7 +469,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
