@@ -26,7 +26,6 @@ en local :
 ``` {style="color:green"}
  withr::with_libpaths("..lib.path...",
                          devtools::install_local(file_zip))
-
 ```
 
 CTRL + SHIFT + R : Création d'une section
@@ -288,4 +287,6 @@ Regex : <https://regex101.com/>
 DataViz : <https://www.data-to-viz.com/>
 
 Color palette : <https://r-graph-gallery.com/color-palette-finder>
+
+test maj
 :::
