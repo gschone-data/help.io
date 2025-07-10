@@ -41,7 +41,7 @@ rm(list=ls())
 Récupération sql depuis **dbplyr**
 
 ``` {style="color:green"}
-tbl(xx,yy) |>   left_join(...)  |>  remote_query
+tbl(xx,yy) |>   left_join(...)  |>  remote_query 
 ```
 
 Utilisation d'un texte pour appeler une variable :
@@ -212,6 +212,13 @@ vi xxxx.R
 sauvegarder : ECHAP + :w
 sauvegarder +quitter : ECHAP + :x
 quitter sans sauvegarder : ECHAP + :q!
+```
+
+Recherche de caractères non ASCII : 
+
+``` {style="color:green"}
+grep --color='auto' -P -n "[\x80-\xFF]" ~/chemin/*
+
 ```
 
 Taille des fichiers :
