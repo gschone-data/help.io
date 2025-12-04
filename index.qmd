@@ -283,6 +283,17 @@ SQL TOP 1 par groupe
 WHERE rnk = 1"
 ```
 
+SQL DOUBLONS 
+``` {style="color:green"}
+
+"SELECT var, count(var)
+  FROM table
+  GROUP BY var
+  HAVING count(var)>1
+
+```
+
+
 ## Biblio
 
 Source : Tidy data écrit par Hadley Wickham
